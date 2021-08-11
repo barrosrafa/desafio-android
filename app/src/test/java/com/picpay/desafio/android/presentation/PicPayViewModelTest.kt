@@ -2,6 +2,7 @@ package com.picpay.desafio.android.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import com.picpay.desafio.android.utils.MainCoroutineRule
@@ -16,6 +17,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Rule
 import org.junit.Test
+import kotlin.test.assertEquals
 
 @ExperimentalCoroutinesApi
 class PicPayViewModelTest {
@@ -46,6 +48,25 @@ class PicPayViewModelTest {
             verify(useCase).invoke()
             viewModel.successResponseEvent.verify()
         }
+
+    @Test
+    fun `get users when is first page should return list`() = runBlockingTest {
+        // Given
+        whenever(useCase.invoke()).thenReturn(mockResponseSuccess())
+
+        // When
+        viewModel.getUsers()
+        viewModel.successResponseEvent.await(50L)
+        // Then
+        verify(useCase).invoke()
+        viewModel.loadingEvent.verify()
+        viewModel.successResponseEvent.verify {
+            assertEquals(1, it!!.data[0].id)
+            assertEquals("teste", it.data[0].name)
+            assertEquals("teste", it.data[0].img)
+            assertEquals("teste", it.data[0].username)
+        }
+    }
 
     private fun mockResponseSuccess(): PicPayPresentation {
         return PicPayPresentation.SuccessResponse(
