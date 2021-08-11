@@ -6,7 +6,4 @@ object Extensions{
     fun isNullOrEmpty(data: List<User>?): Boolean {
         return data == null || data.isNullOrEmpty()
     }
-
-    fun orEmpty(data: List<User>?): List<User> =
-        data ?: listOf()
 }

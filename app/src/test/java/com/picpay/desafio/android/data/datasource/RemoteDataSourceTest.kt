@@ -1,7 +1,7 @@
 package com.picpay.desafio.android.data.datasource
 
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.whenever
 import com.picpay.desafio.android.data.api.PicPayService
 import com.picpay.desafio.android.data.model.User
 import com.picpay.desafio.android.domain.model.UserDomain
@@ -39,7 +39,7 @@ class RemoteDataSourceTest {
 
         // Then
         assertEquals(result, expectedResponse())
-        assertEquals(result?.get(0), 12)
+        assertEquals(result?.get(0)?.id, 12)
     }
 
     private fun mockResponse() =

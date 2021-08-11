@@ -1,7 +1,7 @@
 package com.picpay.desafio.android.data.repository
 
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.whenever
 import com.picpay.desafio.android.data.datasource.RemoteDataSource
 import com.picpay.desafio.android.domain.model.UserDomain
 import com.picpay.desafio.android.domain.repository.PicPayRepository
@@ -30,7 +30,7 @@ class PicPayRepositoryTest {
 
         // Then
         val data = result as PicPayPresentation.SuccessResponse
-        assertEquals(data.items[0], 12)
+        assertEquals(data.items[0].id, 12)
     }
 
     @Test

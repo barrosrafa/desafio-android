@@ -1,7 +1,7 @@
 package com.picpay.desafio.android.domain
 
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.whenever
 import com.picpay.desafio.android.domain.repository.PicPayRepository
 import com.picpay.desafio.android.domain.usecase.GetUsersUseCase
 import com.picpay.desafio.android.presentation.mapper.PicPayPresentation

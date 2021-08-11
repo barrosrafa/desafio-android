@@ -25,9 +25,7 @@ class UserListAdapter : ListAdapter<UserPresentation, UserListItemViewHolder>(Us
     }
 
     override fun onBindViewHolder(holder: UserListItemViewHolder, position: Int) {
-
-                holder.update(repositories[position])
-
+        holder.update(repositories[position])
     }
 
     fun update(repos: List<UserPresentation>) {

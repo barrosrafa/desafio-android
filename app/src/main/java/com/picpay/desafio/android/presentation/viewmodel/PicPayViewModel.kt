@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.br.repogit.utils.Event
-import com.br.repogit.utils.SimpleEvent
-import com.br.repogit.utils.triggerEvent
-import com.br.repogit.utils.triggerPostEvent
+import com.picpay.desafio.android.utils.Event
+import com.picpay.desafio.android.utils.SimpleEvent
+import com.picpay.desafio.android.utils.triggerEvent
+import com.picpay.desafio.android.utils.triggerPostEvent
 import com.picpay.desafio.android.domain.usecase.GetUsersUseCase
 import com.picpay.desafio.android.presentation.mapper.PicPayPresentation
 import com.picpay.desafio.android.presentation.model.UserPresentation
@@ -53,7 +53,6 @@ internal class PicPayViewModel(
     }
 
     private fun requestList(isScrolling: Boolean) {
-
         viewModelScope.launch(dispatcher) {
             handlerLoading(isScrolling)
 
@@ -79,7 +78,6 @@ internal class PicPayViewModel(
                 data.items.let {
                     currentList = it
                 }
-
                 _successResponseEvent.triggerPostEvent(currentList)
             }
         }
